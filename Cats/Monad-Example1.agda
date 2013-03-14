@@ -19,13 +19,13 @@ open import Data.List
 import Data.List.Properties as ListProps
 open ListProps hiding(module Monad)
 open import Cats.Functor
-open import Monad
-open import NaturalTransformation
-open import Logic
+open import Cats.Monad
+open import Cats.NaturalTransformation
+open import Cats.Logic
 
 ListF : ∀ a → Endofunctor (SetCategory a)
 ListF a = record { 
-  F = List; 
+  O = List; 
   map = map; 
   natural-id = extensionality map-id; 
   natural-compose = λ f g → sym (extensionality map-compose) }

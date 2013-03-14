@@ -3,6 +3,8 @@ module Cats.Logic where
 open import Relation.Binary.PropositionalEquality
 
 postulate extensionality : ∀ {a b} {A : Set a} {B : Set b} {f g : A → B} → (∀ x → f x ≡ g x) → f ≡ g
+unextensionality : ∀ {a b} {A : Set a} {B : Set b} {f g : A → B} → f ≡ g → (∀ x → f x ≡ g x)
+unextensionality refl x = refl
 
 implicify : ∀  {a b} {A : Set a} {B : Set b} → ({x : A} → B) → (A → B)
 implicify f = λ x → f {x}

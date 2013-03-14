@@ -13,7 +13,7 @@ record NaturalTransformation {o₁ m₁ o₂ m₂} {C : Category o₁ m₁} {D :
   module F = Functor F
   module G = Functor G
   field
-    η : ∀ {x} → D.Morphism (F.F x) (G.F x)
+    η : ∀ {x} → D.Morphism (F.O x) (G.O x)
     .natural : ∀ {a b} (m : C.Morphism a b) → η ∘ F.map m ≡ G.map m ∘ η
 
 infix 10 _⇒_
