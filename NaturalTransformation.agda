@@ -58,3 +58,10 @@ id {D = D} = record {
   η = Category.id D; 
   natural = λ _ → trans (Category.idˡ D _) (sym (Category.idʳ D _)) 
   }
+
+import Logic
+
+postulate 
+  equal : ∀ {o₁ m₁ o₂ m₂} {C : Category o₁ m₁} {D : Category o₂ m₂} {F G : Functor C D} 
+    → {a b : F ⇒ G} → (∀ x → NaturalTransformation.η a {x} ≡ NaturalTransformation.η b {x}) → a ≡ b
+

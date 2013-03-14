@@ -23,3 +23,6 @@ record Category (o m : Level) : Set (suc (o ⊔ m)) where
     Morphism : Obj → Obj → Set m
     is-category : IsCategory Morphism
   open IsCategory is-category public
+
+_[_,_] : ∀ {o m} → (c : Category o m) → (a b : Category.Obj c) → Set m
+C [ a , b ] = Category.Morphism C a b
