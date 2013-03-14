@@ -11,9 +11,9 @@ SetCategory a = category
   (is 
     (λ z → z) 
     (λ f g x → f (g x)) 
-    (λ m → refl)
-    (λ m → refl) 
-    (λ a' b' c' → refl))
+    (λ _ → refl)
+    (λ _ → refl) 
+    (λ _ _ _ → refl))
 
 open import Data.List
 import Data.List.Properties as ListProps
@@ -34,6 +34,14 @@ concat-return : ∀ {a} {A : Set a} (l : List A) →
    concat (map (λ x → x ∷ []) l) ≡ l
 concat-return [] = refl
 concat-return (x ∷ xs) = cong (_∷_ x) (concat-return xs)
+
+concat-concat : ∀ {a} {A : Set a} (l : List (List (List A))) →
+   concat (concat l) ≡ concat (Data.List.map concat l)
+concat-concat [] = refl
+concat-concat ([] ∷ xs) = concat-concat xs
+concat-concat (([] ∷ xs) ∷ xs') = concat-concat (xs ∷ xs')
+concat-concat (((x ∷ xs) ∷ xs') ∷ xs0) = cong (λ q → x ∷ q) (concat-concat ((xs ∷ xs') ∷ xs0))
+
 
 import Algebra
 
