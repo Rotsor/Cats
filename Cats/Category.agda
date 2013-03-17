@@ -12,9 +12,10 @@ record IsCategory {o m} {O : Set o} (M : O → O → Set m) : Set (o ⊔ m) wher
   field
     id : ∀ {o} → M o o
     _∘_ : ∀ {a b c} → M b c → M a b → M a c
-    idˡ : ∀ {a b} (m : M a b) → id ∘ m ≡ m
-    idʳ : ∀ {a b} (m : M a b) → m ∘ id ≡ m
-    assoc : ∀ {a b c d} (x : M c d) (y : M b c) (z : M a b) → (x ∘ y) ∘ z ≡ x ∘ (y ∘ z)
+    .idˡ : ∀ {a b} (m : M a b) → id ∘ m ≡ m
+    .idʳ : ∀ {a b} (m : M a b) → m ∘ id ≡ m
+    .assoc : ∀ {a b c d} (x : M c d) (y : M b c) (z : M a b) 
+      → (x ∘ y) ∘ z ≡ x ∘ (y ∘ z)
 
 record Category (o m : Level) : Set (suc (o ⊔ m)) where
   constructor category
