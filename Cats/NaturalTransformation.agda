@@ -1,6 +1,6 @@
 module Cats.NaturalTransformation where
 
-open import Cats.Functor using (Functor; module Functor) renaming (_∘_ to _f∘_)
+open import Cats.Functor.Core using (Functor; module Functor) renaming (_∘_ to _f∘_)
 open import Cats.Category
 open import Relation.Binary.PropositionalEquality using (_≡_; refl; trans; sym; cong)
 
